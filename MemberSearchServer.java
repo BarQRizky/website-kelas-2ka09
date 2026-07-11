@@ -30,20 +30,8 @@ import java.util.List;
 public class MemberSearchServer {
 
     // ─── Konfigurasi ──────────────────────────────────────────
-    private static final int    PORT    = getPort();
+    private static final int    PORT    = 8080;
     private static final String ORIGIN  = "*";   // izinkan semua origin (CORS)
-
-    private static int getPort() {
-        String port = System.getenv("PORT");
-        if (port != null && !port.isEmpty()) {
-            try {
-                return Integer.parseInt(port);
-            } catch (NumberFormatException e) {
-                // fallback
-            }
-        }
-        return 8080;
-    }
 
     // ─── Data Anggota 2KA09 ───────────────────────────────────
     // Format: { id, nama, npm }
