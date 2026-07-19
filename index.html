@@ -1,639 +1,715 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kelas 2KA09 — Sistem Informasi Universitas Gunadarma</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  </head>
-  <body>
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar" id="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <img
-            src="images/logo-gunadarma.png"
-            alt="Gunadarma"
-            class="logo-img"
-            onerror="this.style.display = 'none'"
-          />
-          <span class="logo-text">2KA09</span>
-        </div>
-        <ul class="nav-links" id="navLinks">
-          <li>
-            <a href="#home" class="nav-link active" data-section="home">Beranda</a>
-          </li>
-          <li>
-            <a href="#members" class="nav-link" data-section="members"
-              >Anggota</a
-            >
-          </li>
-          <li>
-            <a href="#information" class="nav-link" data-section="information"
-              >Informasi</a
-            >
-          </li>
-          <li>
-            <a href="#gallery" class="nav-link" data-section="gallery"
-              >Galeri</a
-            >
-          </li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-          <span></span><span></span><span></span>
-        </button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelas 2KA09 — Sistem Informasi Universitas Gunadarma</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <!-- ===== REAL-TIME CLOCK ===== -->
+  <div class="clock-widget" id="clockWidget">
+    <div class="clock-time" id="clockTime">00:00</div>
+    <div class="clock-divider"></div>
+    <div class="clock-date" id="clockDate">Senin, 1 Jan 2024</div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="images/logo-gunadarma.png" alt="Gunadarma" class="logo-img" onerror="this.style.display = 'none'" />
+        <span class="logo-text">2KA09</span>
       </div>
-    </nav>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#home" class="nav-link active" data-section="home">Beranda</a>
+        </li>
+        <li>
+          <a href="#members" class="nav-link" data-section="members">Anggota</a>
+        </li>
+        <li>
+          <a href="#information" class="nav-link" data-section="information">Informasi</a>
+        </li>
+        <li>
+          <a href="#gallery" class="nav-link" data-section="gallery">Galeri</a>
+        </li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero" id="home">
-      <!-- Background -->
-      <div class="hero-bg-overlay"></div>
-      <div class="hero-gradient-orb orb-1"></div>
-      <div class="hero-gradient-orb orb-2"></div>
-      <div class="hero-grid"></div>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <!-- Background -->
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-gradient-orb orb-1"></div>
+    <div class="hero-gradient-orb orb-2"></div>
+    <div class="hero-grid"></div>
 
-      <!-- Particles -->
-      <div class="hero-particles" id="particles"></div>
+    <!-- Interactive Anglerfish Canvas -->
+    <canvas id="anglerfishCanvas"></canvas>
 
-      <!-- Main Content -->
-      <div class="hero-container">
-        <div class="hero-content">
-          <!-- Badge -->
-          <div class="hero-badge">
-            <div class="hero-badge-dot"></div>
+    <!-- Particles -->
+    <div class="hero-particles" id="particles"></div>
 
-            <span> Sistem Informasi • FIKTI • Universitas Gunadarma </span>
-          </div>
+    <!-- Main Content -->
+    <div class="hero-container">
+      <div class="hero-content">
+        <!-- Badge -->
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
 
-          <!-- Heading -->
-          <h1 class="hero-title">
-            Masa Depan
-            <span class="hero-gradient-text"> 2KA09 </span>
-          </h1>
-
-          <!-- Subtitle -->
-          <p class="hero-subtitle">
-            lebih baik dari sekedar teman sekelas - kami adalah kreator, inovator, dan pemimpin digital masa depan.
-          </p>
-
-          <!-- Description -->
-          <p class="hero-desc">
-            Website resmi Kelas 2KA09 yang menjadi rumah digital bagi
-            <strong>33 mahasiswa</strong>
-            untuk berbagi cerita, pengalaman, momen kebersamaan, dan perjalanan
-            akademik kami di Universitas Gunadarma.
-          </p>
-
-          <!-- CTA -->
-          <div class="hero-cta">
-            <a href="#members" class="btn btn-primary modern-btn">
-              <span>Lihat Anggota</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-
-            <a href="#gallery" class="btn btn-glass modern-btn">
-              <i class="fas fa-images"></i>
-              <span>Jelajahi Galeri</span>
-            </a>
-          </div>
-
-          <!-- Stats -->
-          <div class="hero-stats">
-            <div class="hero-stat-card">
-              <h3>33+</h3>
-              <p>Anggota</p>
-            </div>
-
-            <div class="hero-stat-card">
-              <h3>8</h3>
-              <p>Mata Kuliah</p>
-            </div>
-
-            <div class="hero-stat-card">
-              <h3>2</h3>
-              <p>Praktikum</p>
-            </div>
-          </div>
+          <span> Sistem Informasi • FIKTI • Universitas Gunadarma </span>
         </div>
 
-        <!-- Hero Visual -->
-        <div class="hero-visual">
-          <div class="hero-image-card main-card">
+        <!-- Heading -->
+        <h1 class="hero-title">
+          Masa Depan
+          <span class="hero-gradient-text"> 2KA09 </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          lebih baik dari sekedar teman sekelas - kami adalah kreator, inovator, dan pemimpin digital masa depan.
+        </p>
+
+        <!-- Description -->
+        <p class="hero-desc">
+          Website resmi Kelas 2KA09 yang menjadi rumah digital bagi
+          <strong>33 mahasiswa</strong>
+          untuk berbagi cerita, pengalaman, momen kebersamaan, dan perjalanan
+          akademik kami di Universitas Gunadarma.
+        </p>
+
+        <!-- CTA -->
+        <div class="hero-cta">
+          <a href="#members" class="btn btn-primary modern-btn">
+            <span>Lihat Anggota</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+
+          <a href="#gallery" class="btn btn-glass modern-btn">
+            <i class="fas fa-images"></i>
+            <span>Jelajahi Galeri</span>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats">
+          <div class="hero-stat-card">
+            <h3>33+</h3>
+            <p>Anggota</p>
+          </div>
+
+          <div class="hero-stat-card">
+            <h3>8</h3>
+            <p>Mata Kuliah</p>
+          </div>
+
+          <div class="hero-stat-card">
+            <h3>2</h3>
+            <p>Praktikum</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual">
+        <div class="hero-image-card main-card">
+          <div class="img-clip">
             <img src="images/gallery/foto2.jpg" alt="2KA09" />
           </div>
-
-          <div class="floating-card card-1">
-            <i class="fas fa-users"></i>
-            <span>33 Anggota</span>
-          </div>
-
-          <div class="floating-card card-2">
-            <i class="fas fa-camera"></i>
-            <span>Kenangan</span>
-          </div>
-
-          <div class="floating-card card-3">
-            <i class="fas fa-code"></i>
-            <span>Inovasi</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scroll -->
-      <div class="hero-scroll-hint">
-        <span>Scroll Down</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- ===== MEMBERS SECTION ===== -->
-    <section class="members-section" id="members">
-      <div class="section-header">
-        <div class="section-tag">Keluarga Kami</div>
-        <h2 class="section-title">
-          Wajah - Wajah Kami <span class="highlight">2KA09</span>
-        </h2>
-        <p class="section-desc">
-          Mengenal 33 individu luar biasa di balik identitas Sistem Informasi.
-        </p>
-      </div>
-
-      <div class="slider-wrapper">
-        <button class="slider-btn prev" id="sliderPrev" aria-label="Previous">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="slider-container" id="sliderContainer">
-          <div class="slider-track" id="sliderTrack"></div>
-        </div>
-        <button class="slider-btn next" id="sliderNext" aria-label="Next">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-
-      <div class="slider-dots" id="sliderDots"></div>
-
-
-      <!-- ===== MEMBER SEARCH BAR ===== -->
-      <div class="member-search-section" id="memberSearchSection">
-        <div class="search-label">
-          <i class="fas fa-search"></i>
-          <span>Cari Member</span>
-        </div>
-        <div class="member-search-wrapper">
-          <div class="search-input-group" id="searchInputGroup">
-            <i class="fas fa-search search-icon-inner"></i>
-            <input
-              type="text"
-              id="memberSearchInput"
-              class="member-search-input"
-              placeholder="Ketik nama atau NPM anggota…"
-              autocomplete="off"
-              spellcheck="false"
-            />
-            <button id="memberSearchClear" class="search-clear-btn" aria-label="Hapus pencarian">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
         </div>
 
-        <!-- Area hasil pencarian -->
-        <div class="search-results-container" id="searchResultsContainer">
-          <div class="search-results-header" id="searchResultsHeader"></div>
-          <div class="search-results-grid" id="searchResultsGrid"></div>
+        <div class="floating-card card-1">
+          <i class="fas fa-users"></i>
+          <span>33 Anggota</span>
         </div>
-      </div>
-      <!-- ===== END MEMBER SEARCH BAR ===== -->
-    </section>
 
-    <!-- ===== MEMBER MODAL ===== -->
-    <div class="modal-overlay" id="memberModal">
-      <div class="modal-card modern-modal">
-        <!-- Close -->
-        <button class="modal-close" id="modalClose">
-          <i class="fas fa-times"></i>
-        </button>
+        <div class="floating-card card-2">
+          <i class="fas fa-camera"></i>
+          <span>Kenangan</span>
+        </div>
 
-        <!-- Background Glow -->
-        <div class="modal-bg-glow"></div>
-
-        <div class="modal-content-layout">
-          <!-- LEFT -->
-          <div class="modal-photo-section">
-            <div class="modal-photo-wrapper">
-              <img src="" id="modalImg" alt="Member Photo" />
-
-              <div class="photo-overlay-gradient"></div>
-
-              <div class="photo-floating-badge">
-                <i class="fas fa-user-graduate"></i>
-                <span>Anggota 2KA09</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- RIGHT -->
-          <div class="modal-info-section">
-            <div class="modal-top">
-              <span class="status-badge modern">
-                <span class="status-dot"></span>
-                Mahasiswa Aktif
-              </span>
-
-              <h3 id="modalName">Nama Mahasiswa</h3>
-
-              <p id="modalNpm" class="npm-text">NPM 10124XXX</p>
-
-              <!-- Instagram -->
-              <div id="modalInstagramWrapper" class="modal-instagram-wrapper" style="display:none;">
-                <i class="fab fa-instagram modal-ig-icon"></i>
-                <a id="modalInstagramLink"
-                   href="#"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="modal-ig-link">@username</a>
-              </div>
-            </div>
-
-            <!-- DETAILS -->
-            <div class="info-details-grid">
-              <div class="detail-card">
-                <div class="detail-icon">
-                  <i class="fas fa-university"></i>
-                </div>
-
-                <div class="detail-content">
-                  <small>Fakultas</small>
-                  <span>FIKTI</span>
-                </div>
-              </div>
-
-              <div class="detail-card">
-                <div class="detail-icon">
-                  <i class="fas fa-laptop-code"></i>
-                </div>
-
-                <div class="detail-content">
-                  <small>Jurusan</small>
-                  <span>Sistem Informasi</span>
-                </div>
-              </div>
-
-              <div class="detail-card">
-                <div class="detail-icon">
-                  <i class="fas fa-layer-group"></i>
-                </div>
-
-                <div class="detail-content">
-                  <small>Kelas</small>
-                  <span>2KA09</span>
-                </div>
-              </div>
-
-              <div class="detail-card">
-                <div class="detail-icon">
-                  <i class="fas fa-calendar-alt"></i>
-                </div>
-
-                <div class="detail-content">
-                  <small>Angkatan</small>
-                  <span>2024</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- FOOTER -->
-            <div class="modal-footer-brand">
-              <div class="footer-brand-left">
-                <div class="ug-logo-circle">
-                  <img src="images/logo-gunadarma.png" alt="UG" />
-                </div>
-
-                <div>
-                  <strong>Universitas Gunadarma</strong>
-                  <p>Kelas 2ka09</p>
-                </div>
-              </div>
-
-              <div class="footer-brand-badge">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-            </div>
-          </div>
+        <div class="floating-card card-3">
+          <i class="fas fa-code"></i>
+          <span>Inovasi</span>
         </div>
       </div>
     </div>
 
-    <!-- ===== INFORMATION SECTION ===== -->
-    <section class="info-section" id="information">
-      <div class="section-header">
-        <div class="section-tag">Akademik</div>
-        <h2 class="section-title">
-          Jadwal <span class="highlight">Akademik</span>
-        </h2>
-        <p class="section-desc">
-          Informasi jadwal perkuliahan dan praktikum Kelas 2KA09
-        </p>
-      </div>
+    <!-- Scroll -->
+    <div class="hero-scroll-hint">
+      <span>Scroll Down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-      <div class="info-container">
-        <div class="tab-switcher">
-          <button class="tab-btn active" data-tab="kelas">
-            <i class="fas fa-chalkboard-teacher"></i> Jadwal Kelas
-          </button>
-          <button class="tab-btn" data-tab="praktikum">
-            <i class="fas fa-flask"></i> Jadwal Praktikum
-          </button>
-        </div>
-
-        <!-- Jadwal Kelas -->
-        <div class="tab-content active" id="tab-kelas">
-          <div class="table-wrapper">
-            <table class="schedule-table">
-              <thead>
-                <tr>
-                  <th><i class="fas fa-chalkboard"></i> Kelas</th>
-                  <th><i class="fas fa-calendar-day"></i> Hari</th>
-                  <th><i class="fas fa-book"></i> Mata Kuliah</th>
-                  <th><i class="fas fa-clock"></i> Waktu (SKS)</th>
-                  <th><i class="fas fa-door-open"></i> Ruang</th>
-                  <th><i class="fas fa-user-tie"></i> Dosen</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge rabu">Rabu</span></td>
-                  <td>Statistika <sup>**</sup></td>
-                  <td>1 / 2 / 3</td>
-                  <td><span class="room-badge">D655</span></td>
-                  <td>Aris Budi Setyawan</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge rabu">Rabu</span></td>
-                  <td>Sistem Operasi <sup>**</sup></td>
-                  <td>5 / 6 / 7</td>
-                  <td><span class="room-badge">D665</span></td>
-                  <td>Abdus Syakur</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge rabu">Rabu</span></td>
-                  <td>Sistem Basis Data 2 <sup>*/**</sup></td>
-                  <td>8 / 9 / 10</td>
-                  <td><span class="room-badge">D665</span></td>
-                  <td>Suharni</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge kamis">Kamis</span></td>
-                  <td>Matematika Sistem Informasi 2</td>
-                  <td>2 / 3</td>
-                  <td><span class="room-badge">D644</span></td>
-                  <td>Erni Rihyanti</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge kamis">Kamis</span></td>
-                  <td>Pemrograman Berorientasi Objek</td>
-                  <td>4 / 5 / 6</td>
-                  <td><span class="room-badge">D644</span></td>
-                  <td>Meta Meysawati</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge kamis">Kamis</span></td>
-                  <td>Matematika Lanjut 2 <sup>**</sup></td>
-                  <td>7 / 8</td>
-                  <td><span class="room-badge">D644</span></td>
-                  <td>Susi Indrati</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge jumat">Jum'at</span></td>
-                  <td>Pengantar Akuntansi Keuangan</td>
-                  <td>2 / 3 / 4</td>
-                  <td><span class="room-badge">D647</span></td>
-                  <td>Dyah Mieta Setyawati</td>
-                </tr>
-                <tr>
-                  <td><span class="class-badge">2KA09</span></td>
-                  <td><span class="day-badge jumat">Jum'at</span></td>
-                  <td>Manajemen & SIM 2 <sup>*</sup></td>
-                  <td>7 / 8</td>
-                  <td><span class="room-badge">D647</span></td>
-                  <td>Cahyawati Diah Kusumarini</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-note">
-            <p><sup>*</sup> Ujian Utama &nbsp;|&nbsp; <sup>**</sup> UAS</p>
-          </div>
-        </div>
-
-        <!-- Jadwal Praktikum -->
-        <div class="tab-content" id="tab-praktikum">
-          <div class="table-wrapper">
-            <table class="schedule-table praktikum-table">
-              <thead>
-                <tr>
-                  <th><i class="fas fa-calendar-day"></i> Hari</th>
-                  <th><i class="fas fa-flask"></i> Praktikum</th>
-                  <th><i class="fas fa-clock"></i> Waktu</th>
-                  <th><i class="fas fa-door-open"></i> Ruang</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="day-badge selasa">Selasa</span></td>
-                  <td>
-                    <div class="praktikum-name">
-                      <i class="fas fa-database"></i>
-                      Sistem Basis Data (SBD)
-                    </div>
-                  </td>
-                  <td>07.30 – 09.30</td>
-                  <td><span class="room-badge">F8423</span></td>
-                </tr>
-                <tr>
-                  <td><span class="day-badge selasa">Selasa</span></td>
-                  <td>
-                    <div class="praktikum-name">
-                      <i class="fas fa-terminal"></i>
-                      Sistem Operasi (SO)
-                    </div>
-                  </td>
-                  <td>11.30 – 13.30</td>
-                  <td><span class="room-badge">E532</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="praktikum-cards">
-            <div class="prak-card">
-              <div class="prak-icon"><i class="fas fa-database"></i></div>
-              <div class="prak-detail">
-                <h4>Sistem Basis Data</h4>
-                <p><i class="fas fa-calendar"></i> Selasa, 07.30 – 09.30</p>
-                <p><i class="fas fa-map-marker-alt"></i> Ruang F8423</p>
-              </div>
-            </div>
-            <div class="prak-card">
-              <div class="prak-icon"><i class="fas fa-terminal"></i></div>
-              <div class="prak-detail">
-                <h4>Sistem Operasi</h4>
-                <p><i class="fas fa-calendar"></i> Selasa, 11.30 – 13.30</p>
-                <p><i class="fas fa-map-marker-alt"></i> Ruang E532</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== GALLERY SECTION ===== -->
-    <section class="gallery-section" id="gallery">
-      <div class="section-header">
-        <div class="section-tag">Galeri</div>
-        <h2 class="section-title">
-          Momen <span class="highlight">Kita</span>
-        </h2>
-        <p class="section-subtitle">Kenangan yang kita ukir bersama di kelas 2KA09</p>
-      </div>
-
-      <div class="gallery-slider">
-        <div class="gallery-slides" id="gallerySlides"></div>
-      </div>
-      <div class="gallery-dots" id="galleryDots"></div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-      <span class="lightbox-close" id="lightboxClose">&times;</span>
-      <img id="lightboxImg" alt="Lightbox" />
+  <!-- ===== MEMBERS SECTION ===== -->
+  <section class="members-section" id="members">
+    <div class="section-header">
+      <div class="section-tag">Keluarga Kami</div>
+      <h2 class="section-title">
+        Wajah - Wajah Kami <span class="highlight">2KA09</span>
+      </h2>
+      <p class="section-desc">
+        Mengenal 33 individu luar biasa di balik identitas Sistem Informasi.
+      </p>
     </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer" id="footer">
-      <div class="footer-glow"></div>
+    <div class="slider-wrapper">
+      <button class="slider-btn prev" id="sliderPrev" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="slider-container" id="sliderContainer">
+        <div class="slider-track" id="sliderTrack"></div>
+      </div>
+      <button class="slider-btn next" id="sliderNext" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
 
-      <div class="footer-container">
+    <div class="slider-dots" id="sliderDots"></div>
+
+
+    <!-- ===== MEMBER SEARCH BAR ===== -->
+    <div class="member-search-section" id="memberSearchSection">
+      <div class="search-label">
+        <i class="fas fa-search"></i>
+        <span>Cari Member</span>
+      </div>
+      <div class="member-search-wrapper">
+        <div class="search-input-group" id="searchInputGroup">
+          <i class="fas fa-search search-icon-inner"></i>
+          <input type="text" id="memberSearchInput" class="member-search-input"
+            placeholder="Ketik nama atau NPM anggota…" autocomplete="off" spellcheck="false" />
+          <button id="memberSearchClear" class="search-clear-btn" aria-label="Hapus pencarian">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Area hasil pencarian -->
+      <div class="search-results-container" id="searchResultsContainer">
+        <div class="search-results-header" id="searchResultsHeader"></div>
+        <div class="search-results-grid" id="searchResultsGrid"></div>
+      </div>
+    </div>
+    <!-- ===== END MEMBER SEARCH BAR ===== -->
+  </section>
+
+  <!-- ===== MEMBER MODAL ===== -->
+  <div class="modal-overlay" id="memberModal">
+    <div class="modal-card modern-modal">
+      <!-- Close -->
+      <button class="modal-close" id="modalClose">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Background Glow -->
+      <div class="modal-bg-glow"></div>
+
+      <div class="modal-content-layout">
         <!-- LEFT -->
-        <div class="footer-brand">
-          <div class="footer-logo-wrap">
-            <img
-              src="images/logo-gunadarma.png"
-              alt="Universitas Gunadarma"
-              class="footer-logo"
-              onerror="this.style.display = 'none'"
-            />
-          </div>
+        <div class="modal-photo-section">
+          <div class="modal-photo-wrapper">
+            <img src="" id="modalImg" alt="Member Photo" />
 
-          <div class="footer-brand-text">
-            <span class="footer-badge">
-              <i class="fas fa-graduation-cap"></i>
-              Sistem Informasi — FIKTI
+            <div class="photo-overlay-gradient"></div>
+
+            <div class="photo-floating-badge">
+              <i class="fas fa-user-graduate"></i>
+              <span>Anggota 2KA09</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="modal-info-section">
+          <div class="modal-top">
+            <span class="status-badge modern">
+              <span class="status-dot"></span>
+              Mahasiswa Aktif
             </span>
 
-            <h2>Kelas <span>2KA09</span></h2>
+            <h3 id="modalName">Nama Mahasiswa</h3>
 
-            <p>
-              Website resmi mahasiswa 2KA09 Universitas Gunadarma sebagai wadah
-              informasi, dokumentasi, dan kebersamaan seluruh anggota kelas.
-            </p>
+            <p id="modalNpm" class="npm-text">NPM 10124XXX</p>
 
-            <div class="footer-socials">
-              <a
-                href="https://www.instagram.com/0ninesignal/"
-                target="_blank"
-                class="footer-social instagram"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
+            <!-- Instagram -->
+            <div id="modalInstagramWrapper" class="modal-instagram-wrapper" style="display:none;">
+              <i class="fab fa-instagram modal-ig-icon"></i>
+              <a id="modalInstagramLink" href="#" target="_blank" rel="noopener noreferrer"
+                class="modal-ig-link">@username</a>
             </div>
           </div>
-        </div>
 
-        <!-- CENTER -->
-        <div class="footer-links">
-          <div class="footer-links-group">
-            <h4>Navigasi</h4>
+          <!-- DETAILS -->
+          <div class="info-details-grid">
+            <div class="detail-card">
+              <div class="detail-icon">
+                <i class="fas fa-university"></i>
+              </div>
 
-            <a href="#home  ">
-              <i class="fas fa-chevron-right"></i>
-              Beranda
-            </a>
+              <div class="detail-content">
+                <small>Fakultas</small>
+                <span>FIKTI</span>
+              </div>
+            </div>
 
-            <a href="#members">
-              <i class="fas fa-chevron-right"></i>
-              Anggota
-            </a>
+            <div class="detail-card">
+              <div class="detail-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
 
-            <a href="#information">
-              <i class="fas fa-chevron-right"></i>
-              Informasi
-            </a>
+              <div class="detail-content">
+                <small>Jurusan</small>
+                <span>Sistem Informasi</span>
+              </div>
+            </div>
 
-            <a href="#gallery">
-              <i class="fas fa-chevron-right"></i>
-              Galeri
-            </a>
+            <div class="detail-card">
+              <div class="detail-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+
+              <div class="detail-content">
+                <small>Kelas</small>
+                <span>2KA09</span>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <div class="detail-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+
+              <div class="detail-content">
+                <small>Angkatan</small>
+                <span>2024</span>
+              </div>
+            </div>
           </div>
 
-          <div class="footer-links-group">
-            <h4>Info Kelas</h4>
+          <!-- FOOTER -->
+          <div class="modal-footer-brand">
+            <div class="footer-brand-left">
+              <div class="ug-logo-circle">
+                <img src="images/logo-gunadarma.png" alt="UG" />
+              </div>
 
-            <div class="footer-info-item">
-              <i class="fas fa-users"></i>
-              <span>33 Mahasiswa</span>
+              <div>
+                <strong>Universitas Gunadarma</strong>
+                <p>Kelas 2ka09</p>
+              </div>
             </div>
 
-            <div class="footer-info-item">
-              <i class="fas fa-book"></i>
-              <span>8 Mata Kuliah</span>
-            </div>
-
-            <div class="footer-info-item">
-              <i class="fas fa-laptop-code"></i>
-              <span>2 Praktikum</span>
+            <div class="footer-brand-badge">
+              <i class="fas fa-database"></i>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- BOTTOM -->
-      <div class="footer-bottom">
-        <p>
-          © <span class="footer-year"></span>
-          Kelas 2KA09 — Universitas Gunadarma
-        </p>
+  <!-- ===== INFORMATION SECTION ===== -->
+  <section class="info-section" id="information">
+    <div class="section-header">
+      <div class="section-tag">Akademik</div>
+      <h2 class="section-title">
+        Jadwal <span class="highlight">Akademik</span>
+      </h2>
+      <p class="section-desc">
+        Informasi jadwal perkuliahan dan praktikum Kelas 2KA09
+      </p>
+    </div>
 
-        <p class="footer-credit">
-          Dibuat Oleh
-          <strong>Kelompok Dua</strong>
-        </p>
+    <div class="info-container">
+      <div class="tab-switcher">
+        <button class="tab-btn active" data-tab="kelas">
+          <i class="fas fa-chalkboard-teacher"></i> Jadwal Kelas
+        </button>
+        <button class="tab-btn" data-tab="praktikum">
+          <i class="fas fa-flask"></i> Jadwal Praktikum
+        </button>
       </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+      <!-- Jadwal Kelas -->
+      <div class="tab-content active" id="tab-kelas">
+
+        <!-- Filter Hari -->
+        <div class="day-filter" id="dayFilter">
+          <button class="day-btn" data-day="Semua">Semua</button>
+          <button class="day-btn" data-day="Senin">Senin</button>
+          <button class="day-btn" data-day="Selasa">Selasa</button>
+          <button class="day-btn" data-day="Rabu">Rabu</button>
+          <button class="day-btn" data-day="Kamis">Kamis</button>
+          <button class="day-btn" data-day="Jumat">Jum'at</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th><i class="fas fa-chalkboard"></i> Kelas</th>
+                <th><i class="fas fa-calendar-day"></i> Hari</th>
+                <th><i class="fas fa-book"></i> Mata Kuliah</th>
+                <th><i class="fas fa-clock"></i> Waktu (SKS)</th>
+                <th><i class="fas fa-door-open"></i> Ruang</th>
+                <th><i class="fas fa-user-tie"></i> Dosen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge rabu">Rabu</span></td>
+                <td>Statistika <sup>**</sup></td>
+                <td>1 / 2 / 3</td>
+                <td><span class="room-badge">D655</span></td>
+                <td>Aris Budi Setyawan</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge rabu">Rabu</span></td>
+                <td>Sistem Operasi <sup>**</sup></td>
+                <td>5 / 6 / 7</td>
+                <td><span class="room-badge">D665</span></td>
+                <td>Abdus Syakur</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge rabu">Rabu</span></td>
+                <td>Sistem Basis Data 2 <sup>*/**</sup></td>
+                <td>8 / 9 / 10</td>
+                <td><span class="room-badge">D665</span></td>
+                <td>Suharni</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge kamis">Kamis</span></td>
+                <td>Matematika Sistem Informasi 2</td>
+                <td>2 / 3</td>
+                <td><span class="room-badge">D644</span></td>
+                <td>Erni Rihyanti</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge kamis">Kamis</span></td>
+                <td>Pemrograman Berorientasi Objek</td>
+                <td>4 / 5 / 6</td>
+                <td><span class="room-badge">D644</span></td>
+                <td>Meta Meysawati</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge kamis">Kamis</span></td>
+                <td>Matematika Lanjut 2 <sup>**</sup></td>
+                <td>7 / 8</td>
+                <td><span class="room-badge">D644</span></td>
+                <td>Susi Indrati</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge jumat">Jum'at</span></td>
+                <td>Pengantar Akuntansi Keuangan</td>
+                <td>2 / 3 / 4</td>
+                <td><span class="room-badge">D647</span></td>
+                <td>Dyah Mieta Setyawati</td>
+              </tr>
+              <tr>
+                <td><span class="class-badge">2KA09</span></td>
+                <td><span class="day-badge jumat">Jum'at</span></td>
+                <td>Manajemen & SIM 2 <sup>*</sup></td>
+                <td>7 / 8</td>
+                <td><span class="room-badge">D647</span></td>
+                <td>Cahyawati Diah Kusumarini</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-note">
+          <p><sup>*</sup> Ujian Utama &nbsp;|&nbsp; <sup>**</sup> UAS</p>
+        </div>
+      </div>
+
+      <!-- Jadwal Praktikum -->
+      <div class="tab-content" id="tab-praktikum">
+        <div class="table-wrapper">
+          <table class="schedule-table praktikum-table">
+            <thead>
+              <tr>
+                <th><i class="fas fa-calendar-day"></i> Hari</th>
+                <th><i class="fas fa-flask"></i> Praktikum</th>
+                <th><i class="fas fa-clock"></i> Waktu</th>
+                <th><i class="fas fa-door-open"></i> Ruang</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="day-badge selasa">Selasa</span></td>
+                <td>
+                  <div class="praktikum-name">
+                    <i class="fas fa-database"></i>
+                    Sistem Basis Data (SBD)
+                  </div>
+                </td>
+                <td>07.30 – 09.30</td>
+                <td><span class="room-badge">F8423</span></td>
+              </tr>
+              <tr>
+                <td><span class="day-badge selasa">Selasa</span></td>
+                <td>
+                  <div class="praktikum-name">
+                    <i class="fas fa-terminal"></i>
+                    Sistem Operasi (SO)
+                  </div>
+                </td>
+                <td>11.30 – 13.30</td>
+                <td><span class="room-badge">E532</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="praktikum-cards">
+          <div class="prak-card">
+            <div class="prak-icon"><i class="fas fa-database"></i></div>
+            <div class="prak-detail">
+              <h4>Sistem Basis Data</h4>
+              <p><i class="fas fa-calendar"></i> Selasa, 07.30 – 09.30</p>
+              <p><i class="fas fa-map-marker-alt"></i> Ruang F8423</p>
+            </div>
+          </div>
+          <div class="prak-card">
+            <div class="prak-icon"><i class="fas fa-terminal"></i></div>
+            <div class="prak-detail">
+              <h4>Sistem Operasi</h4>
+              <p><i class="fas fa-calendar"></i> Selasa, 11.30 – 13.30</p>
+              <p><i class="fas fa-map-marker-alt"></i> Ruang E532</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY SECTION ===== -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <div class="section-tag">Galeri</div>
+      <h2 class="section-title">
+        Momen <span class="highlight">Kita</span>
+      </h2>
+      <p class="section-subtitle">Kenangan yang kita ukir bersama di kelas 2KA09</p>
+    </div>
+
+    <div class="gallery-slider">
+      <div class="gallery-slides" id="gallerySlides"></div>
+    </div>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <span class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></span>
+    <img id="lightboxImg" alt="Lightbox" />
+    <span class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></span>
+  </div>
+
+  <!-- ===== DINO RUNNER ===== -->
+  <div class="dino-runner-section" id="dinoRunnerSection">
+    <div class="dino-ground-track">
+      <!-- Ground line -->
+      <div class="dino-ground-line"></div>
+
+      <!-- Clouds -->
+      <div class="dino-cloud cloud-1">
+        <svg width="80" height="30" viewBox="0 0 80 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="18" width="60" height="10" rx="5" fill="rgba(200,200,255,0.18)" />
+          <rect x="20" y="9" width="42" height="16" rx="8" fill="rgba(200,200,255,0.18)" />
+          <rect x="32" y="2" width="22" height="14" rx="7" fill="rgba(200,200,255,0.18)" />
+        </svg>
+      </div>
+      <div class="dino-cloud cloud-2">
+        <svg width="60" height="26" viewBox="0 0 60 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="16" width="44" height="8" rx="4" fill="rgba(200,200,255,0.14)" />
+          <rect x="16" y="8" width="30" height="14" rx="7" fill="rgba(200,200,255,0.14)" />
+          <rect x="24" y="2" width="16" height="12" rx="6" fill="rgba(200,200,255,0.14)" />
+        </svg>
+      </div>
+
+      <!-- Cactus obstacles -->
+      <div class="dino-cactus cactus-1">
+        <svg width="28" height="56" viewBox="0 0 28 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="9" y="0" width="10" height="56" rx="3" fill="#6ee7b7" />
+          <rect x="0" y="20" width="9" height="7" rx="2" fill="#6ee7b7" />
+          <rect x="19" y="14" width="9" height="7" rx="2" fill="#6ee7b7" />
+          <rect x="0" y="13" width="5" height="14" rx="2" fill="#6ee7b7" />
+          <rect x="23" y="7" width="5" height="14" rx="2" fill="#6ee7b7" />
+        </svg>
+      </div>
+      <div class="dino-cactus cactus-2">
+        <svg width="40" height="62" viewBox="0 0 40 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="0" width="12" height="62" rx="3" fill="#6ee7b7" />
+          <rect x="0" y="22" width="14" height="8" rx="2" fill="#6ee7b7" />
+          <rect x="26" y="15" width="14" height="8" rx="2" fill="#6ee7b7" />
+          <rect x="0" y="15" width="6" height="15" rx="2" fill="#6ee7b7" />
+          <rect x="34" y="8" width="6" height="15" rx="2" fill="#6ee7b7" />
+        </svg>
+      </div>
+      <div class="dino-cactus cactus-3">
+        <svg width="22" height="46" viewBox="0 0 22 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="0" width="8" height="46" rx="3" fill="#6ee7b7" />
+          <rect x="0" y="18" width="7" height="6" rx="2" fill="#6ee7b7" />
+          <rect x="15" y="12" width="7" height="6" rx="2" fill="#6ee7b7" />
+          <rect x="0" y="12" width="4" height="12" rx="2" fill="#6ee7b7" />
+          <rect x="18" y="6" width="4" height="12" rx="2" fill="#6ee7b7" />
+        </svg>
+      </div>
+
+      <!-- ===== DINO CHARACTER (CSS Pixel Art) ===== -->
+      <div class="dino-character" id="dinoCharacter">
+        <div class="dino-pixel-wrap">
+          <!-- Head -->
+          <div class="dp dp-head"></div>
+          <!-- Eye -->
+          <div class="dp dp-eye"></div>
+          <!-- Snout -->
+          <div class="dp dp-snout"></div>
+          <!-- Body -->
+          <div class="dp dp-body"></div>
+          <!-- Tail -->
+          <div class="dp dp-tail"></div>
+          <!-- Tiny arm -->
+          <div class="dp dp-arm"></div>
+          <!-- Legs -->
+          <div class="dp dp-leg dp-leg-l"></div>
+          <div class="dp dp-leg dp-leg-r"></div>
+        </div>
+      </div>
+      <!-- ===== END DINO ===== -->
+
+      <!-- Score / label -->
+      <div class="dino-score-label">
+        <span class="dino-label-text">🦕 &nbsp;Akhir dari perjalanan... tapi petualangan baru menanti!</span>
+      </div>
+    </div>
+  </div>
+  <!-- ===== END DINO RUNNER ===== -->
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer-glow"></div>
+
+    <div class="footer-container">
+      <!-- LEFT -->
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="images/logo-gunadarma.png" alt="Universitas Gunadarma" class="footer-logo"
+            onerror="this.style.display = 'none'" />
+        </div>
+
+        <div class="footer-brand-text">
+          <span class="footer-badge">
+            <i class="fas fa-graduation-cap"></i>
+            Sistem Informasi — FIKTI
+          </span>
+
+          <h2>Kelas <span>2KA09</span></h2>
+
+          <p>
+            Website resmi mahasiswa 2KA09 Universitas Gunadarma sebagai wadah
+            informasi, dokumentasi, dan kebersamaan seluruh anggota kelas.
+          </p>
+
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/0ninesignal/" target="_blank" class="footer-social instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER -->
+      <div class="footer-links">
+        <div class="footer-links-group">
+          <h4>Navigasi</h4>
+
+          <a href="#home  ">
+            <i class="fas fa-chevron-right"></i>
+            Beranda
+          </a>
+
+          <a href="#members">
+            <i class="fas fa-chevron-right"></i>
+            Anggota
+          </a>
+
+          <a href="#information">
+            <i class="fas fa-chevron-right"></i>
+            Informasi
+          </a>
+
+          <a href="#gallery">
+            <i class="fas fa-chevron-right"></i>
+            Galeri
+          </a>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Info Kelas</h4>
+
+          <div class="footer-info-item">
+            <i class="fas fa-users"></i>
+            <span>33 Mahasiswa</span>
+          </div>
+
+          <div class="footer-info-item">
+            <i class="fas fa-book"></i>
+            <span>8 Mata Kuliah</span>
+          </div>
+
+          <div class="footer-info-item">
+            <i class="fas fa-laptop-code"></i>
+            <span>2 Praktikum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom">
+      <p>
+        © <span class="footer-year"></span>
+        Kelas 2KA09 — Universitas Gunadarma
+      </p>
+
+      <p class="footer-credit">
+        Dibuat Oleh
+        <strong>Kelompok Dua</strong>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="clock.js"></script>
+</body>
+
 </html>
