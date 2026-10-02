@@ -481,15 +481,15 @@ function initTabs() {
 function initGallery() {
   const slidesWrap = document.getElementById("gallerySlides");
   const dotsWrap = document.getElementById("galleryDots");
-  
+
   if (!slidesWrap) return;
-  
+
   if (dotsWrap) dotsWrap.style.display = 'none';
   slidesWrap.innerHTML = "";
-  
+
   const marqueeContainer = document.createElement("div");
   marqueeContainer.className = "gallery-marquee-container single-row";
-  
+
   const track1 = document.createElement("div");
   track1.className = "marquee-track track-left";
 
@@ -505,7 +505,7 @@ function initGallery() {
       img.loading = "lazy";
 
       slide.appendChild(img);
-      
+
       slide.addEventListener("click", () => {
         const lb = document.getElementById("lightbox");
         const lbImg = document.getElementById("lightboxImg");
@@ -767,7 +767,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFooter();
 
   console.log(
-    "%c2KA09 — Sistem Informasi Universitas Gunadarma",
+    "%c3KA09 — Sistem Informasi Universitas Gunadarma",
     "background: linear-gradient(135deg,#2d1b69,#f0b429); color:#fff; padding:8px 16px; border-radius:8px; font-weight:bold; font-size:14px;",
   );
   console.log(
@@ -1511,9 +1511,9 @@ function initTechBackground() {
   const canvas = document.getElementById("anglerfishCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  
+
   let width, height;
-  
+
   function resize() {
     width = canvas.width = window.innerWidth;
     const hero = document.querySelector('.hero');
@@ -1546,7 +1546,7 @@ function initTechBackground() {
     ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
     ctx.fillStyle = "rgba(0, 229, 255, 0.8)";
     ctx.lineWidth = 0.8;
-    
+
     if (i === 1) {
       // Draw Head
       ctx.fillStyle = "#ffffff";
@@ -1559,7 +1559,7 @@ function initTechBackground() {
       ctx.lineTo(-2, -6);
       ctx.closePath();
       ctx.fill();
-      
+
       // Eyes
       ctx.fillStyle = "#000000";
       ctx.shadowBlur = 0;
@@ -1577,7 +1577,7 @@ function initTechBackground() {
       ctx.lineTo(0, -1.5);
       ctx.closePath();
       ctx.fill();
-      
+
       // Wings
       ctx.beginPath();
       ctx.moveTo(0, 0);
@@ -1595,37 +1595,37 @@ function initTechBackground() {
     let e = elems[0];
     const ax = (Math.cos(3 * frm) * rad * width) / height;
     const ay = (Math.sin(4 * frm) * rad * height) / width;
-    
+
     e.x += (ax + pointer.x - e.x) / 10;
     e.y += (ay + pointer.y - e.y) / 10;
-    
+
     for (let i = 1; i < N; i++) {
       let e = elems[i];
       let ep = elems[i - 1];
       const a = Math.atan2(e.y - ep.y, e.x - ep.x);
-      
+
       // Scale tapers from ~3.5 at head down to 0.1 at tail
       const s = Math.max(0.1, 3.5 * (1 - i / N));
-      
+
       // Distance is proportional to scale, so smaller tail segments bunch up tighter
       const dist = 5 * s + 2;
-      
+
       e.x += (ep.x - e.x + Math.cos(a) * dist) / 4;
       e.y += (ep.y - e.y + Math.sin(a) * dist) / 4;
-      
+
       ctx.save();
       ctx.translate((ep.x + e.x) / 2, (ep.y + e.y) / 2);
       ctx.rotate(a);
       ctx.scale(s, s);
-      
+
       drawSegment(i);
-      
+
       ctx.restore();
     }
-    
+
     if (rad < radm) rad++;
     frm += 0.003;
-    
+
     if (Date.now() - lastMouseMove > 2000) {
       // Create a smooth wandering target when idle
       const targetX = width / 2 + Math.sin(frm * 2) * (width * 0.3) + Math.cos(frm * 1.5) * (width * 0.1);
@@ -1634,7 +1634,7 @@ function initTechBackground() {
       pointer.y += (targetY - pointer.y) * 0.02;
     }
   }
-  
+
   run();
 })();
 
@@ -1647,23 +1647,23 @@ function initScheduleFilter() {
 
   // Get current day name in Indonesian
   const HARI = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-  
+
   // Gunakan waktu lokal (WIB) untuk menyesuaikan dengan zona waktu lokal
   const wib = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
   let currentDay = HARI[wib.getDay()];
-  
+
   // Jika hari Sabtu atau Minggu, otomatis tampilkan hari Senin
   if (currentDay === 'Minggu' || currentDay === 'Sabtu') {
     currentDay = 'Senin';
   }
-  
+
   function normalize(str) {
     return str.toLowerCase().replace(/[^a-z0-9]/g, '');
   }
 
   function filterByDay(dayName) {
     const targetDay = normalize(dayName);
-    
+
     // Update state tombol aktif
     dayBtns.forEach(btn => {
       if (normalize(btn.dataset.day) === targetDay) {
@@ -1675,11 +1675,11 @@ function initScheduleFilter() {
 
     // Proses filter hanya untuk tabel Jadwal Kelas
     const tables = document.querySelectorAll("#tab-kelas .schedule-table");
-    
+
     tables.forEach(table => {
       const tbody = table.querySelector("tbody");
       if (!tbody) return;
-      
+
       const rows = tbody.querySelectorAll("tr:not(.empty-row)");
       let visibleCount = 0;
 

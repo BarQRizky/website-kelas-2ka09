@@ -11,11 +11,11 @@ import java.util.List;
 
 /**
  * ============================================================
- *  MemberSearchServer.java — Kelas 2KA09
+ *  MemberSearchServer.java — Kelas 3KA09
  *  Universitas Gunadarma | Sistem Informasi | FIKTI
  * ============================================================
  *  Server backend sederhana yang menyediakan REST API untuk
- *  fitur pencarian anggota kelas di website 2KA09.
+ *  fitur pencarian anggota kelas di website 3KA09.
  *
  *  Cara menjalankan:
  *    javac MemberSearchServer.java
@@ -33,7 +33,7 @@ public class MemberSearchServer {
     private static final int    PORT    = 8080;
     private static final String ORIGIN  = "*";   // izinkan semua origin (CORS)
 
-    // ─── Data Anggota 2KA09 ───────────────────────────────────
+    // ─── Data Anggota 3KA09 ───────────────────────────────────
     // Format: { id, nama, npm }
     private static final String[][] MEMBERS = {
         { "1",  "ADITYA ANANDA PUTRI",              "11124445" },
@@ -146,7 +146,7 @@ public class MemberSearchServer {
         String html =
             "<!DOCTYPE html><html lang='id'>" +
             "<head><meta charset='UTF-8'>" +
-            "<title>MemberSearch API — 2KA09</title>" +
+            "<title>MemberSearch API — 3KA09</title>" +
             "<style>" +
             "  body{font-family:Inter,sans-serif;background:#0d0d14;color:#f0f0f8;padding:48px;max-width:600px;margin:auto}" +
             "  h1{color:#7b52d4;margin-bottom:4px}" +
@@ -159,7 +159,7 @@ public class MemberSearchServer {
             "</style></head>" +
             "<body>" +
             "<h1>🎓 MemberSearch API</h1>" +
-            "<p class='sub'>Kelas 2KA09 · Sistem Informasi · FIKTI · Universitas Gunadarma</p>" +
+            "<p class='sub'>Kelas 3KA09 · Sistem Informasi · FIKTI · Universitas Gunadarma</p>" +
             "<span class='badge'>Port " + PORT + "</span>" +
             "<h3 style='margin-top:32px'>Endpoint Tersedia</h3>" +
             "<div class='ep'>" +
@@ -249,7 +249,7 @@ public class MemberSearchServer {
     private static void printBanner() {
         System.out.println();
         System.out.println("  ┌─────────────────────────────────────────────────┐");
-        System.out.println("  │         MemberSearch Server — Kelas 2KA09       │");
+        System.out.println("  │         MemberSearch Server — Kelas 3KA09       │");
         System.out.println("  │   Universitas Gunadarma  ·  Sistem Informasi    │");
         System.out.println("  ├─────────────────────────────────────────────────┤");
         System.out.printf ("  │  Berjalan di  →  http://localhost:%d            │%n", PORT);
