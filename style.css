@@ -1811,6 +1811,18 @@ section {
   white-space: nowrap;
 }
 
+.day-badge.senin {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.day-badge.selasa {
+  background: rgba(231, 76, 60, 0.12);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
 .day-badge.rabu {
   background: rgba(52, 152, 219, 0.15);
   color: #5dade2;
@@ -1829,10 +1841,34 @@ section {
   border: 1px solid var(--border-gold);
 }
 
-.day-badge.selasa {
-  background: rgba(231, 76, 60, 0.12);
-  color: #e74c3c;
-  border: 1px solid rgba(231, 76, 60, 0.3);
+.day-badge.sabtu {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.date-badge {
+  background: rgba(123, 82, 212, 0.12);
+  color: #c4b5fd;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(123, 82, 212, 0.25);
+  white-space: nowrap;
+}
+
+.praktikum-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.praktikum-name i {
+  color: var(--purple-light);
+  font-size: 0.95rem;
 }
 
 .room-badge {
